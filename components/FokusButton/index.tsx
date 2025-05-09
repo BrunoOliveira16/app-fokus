@@ -1,18 +1,28 @@
+import { ReactElement } from "react";
 import { Text, StyleSheet, Pressable } from "react-native";
 
-export const FokusButton = () => {
+interface FokusButtonProps {
+  title: string;
+  icon: ReactElement;
+  handlePress: () => void;
+}
+
+export const FokusButton = ({ title, icon, handlePress }: FokusButtonProps) => {
   return (
-    <Pressable style={styles.button}>
-      <Text style={styles.buttonText}>Começar</Text>
+    <Pressable style={styles.button} onPress={handlePress}>
+      {icon}
+      <Text style={styles.buttonText}>{title}</Text>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   button: {
+    flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     padding: 8,
-    gap: 10,
+    gap: 12,
     borderRadius: 32,
     backgroundColor: "#B872FF",
   },
